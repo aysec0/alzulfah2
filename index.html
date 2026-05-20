@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;500;600;700;900&family=Reem+Kufi:wght@400;500;600;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 <style>
 :root{
   --green-950:#072017;
@@ -77,6 +79,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 #journey button:hover::after{opacity:1;transform:translateX(0)}
 #journey button:hover{background:var(--gold)}
 #journey button.active{background:var(--gold);box-shadow:0 0 0 5px rgba(198,162,86,.22);transform:scale(1.15)}
+/* current section label stays visible next to its dot */
+#journey button.active::after{
+  opacity:1;transform:translateX(0);font-weight:700;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--green-900);
+  box-shadow:0 6px 18px rgba(198,162,86,.4);
+}
 
 /* ---------- Buttons ---------- */
 .btn{
@@ -113,7 +121,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .crescent svg{width:74px;height:74px}
 
 .kicker{
-  color:var(--gold-light);font-family:var(--font-body);font-weight:600;letter-spacing:2px;
+  color:var(--gold-light);font-family:var(--font-body);font-weight:600;
   font-size:.95rem;margin-bottom:14px;padding:7px 20px;border:1px solid rgba(198,162,86,.4);
   border-radius:40px;background:rgba(198,162,86,.08);
 }
@@ -128,7 +136,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   font-weight:500;margin-bottom:8px;
 }
 .hero .verse-ref{
-  color:rgba(247,243,233,.75);font-size:1.05rem;margin-bottom:34px;font-weight:300;letter-spacing:1px;
+  color:rgba(247,243,233,.75);font-size:1.05rem;margin-bottom:34px;font-weight:300;
 }
 .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
 .scroll-hint{position:absolute;bottom:28px;color:rgba(247,243,233,.6);font-size:.85rem;animation:bob 2s infinite;display:flex;flex-direction:column;align-items:center;gap:6px}
@@ -210,12 +218,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 }
 .flash-front{background:linear-gradient(155deg,var(--green-700),var(--green-900));color:var(--cream);border:1px solid rgba(198,162,86,.3)}
 .flash-back{background:linear-gradient(155deg,var(--paper),var(--cream-2));color:var(--ink);transform:rotateY(180deg);border:2px solid var(--gold)}
-.flash-badge{position:absolute;top:14px;right:14px;font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:30px;letter-spacing:.5px}
+.flash-badge{position:absolute;top:14px;right:14px;font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:30px}
 .badge-match{background:rgba(198,162,86,.25);color:var(--gold-light)}
 .badge-explain{background:var(--green-700);color:var(--gold-light)}
 .flash-front .word{font-family:var(--font-quran);font-size:2rem;font-weight:700;color:var(--gold-light)}
 .flash-front .meaning-prompt{font-family:var(--font-quran);font-size:1.5rem;line-height:1.8}
-.flash-back .label{font-size:.78rem;color:var(--gold-deep);font-weight:700;margin-bottom:8px;letter-spacing:.5px}
+.flash-back .label{font-size:.78rem;color:var(--gold-deep);font-weight:700;margin-bottom:8px}
 .flash-back .answer{font-family:var(--font-quran);font-size:1.4rem;color:var(--green-800);font-weight:700;margin-bottom:6px}
 .flash-back .detail{font-size:.92rem;color:var(--muted);line-height:1.7}
 .flash-flip-hint{position:absolute;bottom:12px;font-size:.72rem;opacity:.6;width:100%;left:0;text-align:center}
@@ -310,7 +318,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 }
 .dhikr-card .hadith-q{font-family:var(--font-quran);font-size:clamp(1.3rem,3.6vw,1.7rem);color:var(--gold-light);line-height:2.1}
 .dhikr-card .src{color:rgba(247,243,233,.6);font-size:.85rem;margin-top:10px}
-.counter-stage{position:relative;width:260px;height:260px;display:flex;align-items:center;justify-content:center}
+.counter-stage{position:relative;width:260px;height:260px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:50%}
+.counter-stage:active .count-btn{transform:scale(.95)}
 .ring{transform:rotate(-90deg);position:absolute;inset:0}
 .ring circle{fill:none;stroke-width:10;stroke-linecap:round}
 .ring .track{stroke:rgba(247,243,233,.12)}
@@ -323,7 +332,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .count-btn:active{transform:scale(.94)}
 .count-btn .num{font-size:4rem;font-weight:900;line-height:1;font-family:var(--font-body)}
 .count-btn .of{font-size:1rem;font-weight:600;opacity:.7}
-.count-btn .tap{font-size:.8rem;margin-top:6px;opacity:.65;letter-spacing:1px}
+.count-btn .tap{font-size:.8rem;margin-top:6px;opacity:.65}
 .tasbih-meta{display:flex;gap:16px;align-items:center;margin-top:26px;flex-wrap:wrap;justify-content:center}
 .dhikr-toggle{display:flex;background:rgba(247,243,233,.08);border-radius:50px;padding:5px;gap:4px}
 .dhikr-toggle button{padding:9px 18px;border-radius:50px;font-family:var(--font-quran);font-size:1.15rem;font-weight:700;color:rgba(247,243,233,.7);transition:.25s}
@@ -417,6 +426,30 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 footer{background:var(--green-950);color:rgba(247,243,233,.6);text-align:center;padding:36px 20px;font-size:.9rem}
 footer .crescent-sm{width:34px;height:34px;margin:0 auto 12px;opacity:.8}
 footer .crescent-sm svg{width:34px;fill:var(--gold)}
+
+.cert-pdf-hint{margin-top:14px;color:var(--gold-light);font-size:.85rem;opacity:.8}
+
+/* ---------- Printable certificate (off-screen, captured to PDF) ---------- */
+#cert-pdf{position:fixed;left:-9999px;top:0;width:1000px;height:707px;background:#f7f3e9;direction:rtl;font-family:var(--font-body)}
+#cert-pdf .cp-frame{
+  box-sizing:border-box;width:100%;height:100%;padding:50px 70px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,#fdfbf4,#efe7d4);
+  border:2px solid #a8843f;box-shadow:inset 0 0 0 9px #fdfbf4, inset 0 0 0 12px #c6a256;
+}
+#cert-pdf .cp-logo{width:84px;height:84px;background:#fbf9f2;border-radius:20px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(198,162,86,.5);box-shadow:0 6px 18px rgba(0,0,0,.12);margin-bottom:10px}
+#cert-pdf .cp-logo svg{width:52px;height:52px}
+#cert-pdf .cp-kicker{color:#a8843f;font-size:15px;font-weight:600;margin-bottom:4px}
+#cert-pdf .cp-title{font-family:var(--font-script);font-size:60px;color:#0d3b2e;line-height:1;margin:2px 0;font-weight:700}
+#cert-pdf .cp-divider{width:130px;height:3px;background:linear-gradient(90deg,transparent,#c6a256,transparent);margin:14px 0}
+#cert-pdf .cp-intro{color:#5c6b62;font-size:18px;margin-bottom:4px}
+#cert-pdf .cp-name{font-family:var(--font-script);font-size:46px;color:#a8843f;font-weight:700;border-bottom:2px dashed #c6a256;padding:0 36px 12px;margin-bottom:16px}
+#cert-pdf .cp-body{font-size:18px;color:#2a3a31;line-height:2;max-width:780px;margin-bottom:14px}
+#cert-pdf .cp-body b{color:#13503c}
+#cert-pdf .cp-blessing{font-family:var(--font-quran);font-size:25px;color:#13503c;line-height:1.9;margin-bottom:20px}
+#cert-pdf .cp-footer{display:flex;align-items:center;gap:28px}
+#cert-pdf .cp-seal{font-family:var(--font-script);font-weight:700;color:#0d3b2e;font-size:22px;background:rgba(198,162,86,.16);border:1.5px solid #c6a256;border-radius:40px;padding:6px 24px}
+#cert-pdf .cp-date{color:#5c6b62;font-size:15px}
 
 #confetti-canvas{position:fixed;inset:0;pointer-events:none;z-index:2000}
 
@@ -921,7 +954,8 @@ footer .crescent-sm svg{width:34px;fill:var(--gold)}
       <p class="cert-sub">الزُّلفة ٢ · الورد الرابع — سورة الحج (٢٤–٣٠)</p>
       <input type="text" class="name-input" id="cert-name" placeholder="اكتب اسمك هنا" maxlength="32" />
       <p class="blessing">اللهُمَّ اجعَلْنا مِن أهلِ القُرآنِ الذينَ هُم أهلُكَ وخاصّتُكَ 🤍</p>
-      <button class="btn btn-gold" id="celebrate-btn">احتفِ بإتمامي ✦</button>
+      <button class="btn btn-gold" id="celebrate-btn">احتفِ ونزِّل شهادتي ✦</button>
+      <p class="cert-pdf-hint">ستُحفظ شهادتك كملف PDF بعد الضغط</p>
     </div>
   </div>
 </section>
@@ -933,6 +967,30 @@ footer .crescent-sm svg{width:34px;fill:var(--gold)}
   <p>الزُّلفة ٢ · رفيقي في مصاحبة سورة الحج — عشرة أيام من النعيم</p>
   <p style="margin-top:6px;opacity:.6;font-size:.82rem">صُنع بحبّ ليكون نورًا لمن يقرؤه · ﴿وَذَكِّرْ فَإِنَّ الذِّكْرَىٰ تَنفَعُ الْمُؤْمِنِينَ﴾</p>
 </footer>
+
+<!-- Off-screen printable certificate (captured to PDF) -->
+<div id="cert-pdf" aria-hidden="true">
+  <div class="cp-frame">
+    <div class="cp-logo">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="46" cy="50" r="34" fill="#2a2a6a"/>
+        <circle cx="60" cy="44" r="28" fill="#fbf9f2"/>
+        <path fill="#2a2a6a" d="M70 38l4.7 9.5 10.5 1.5-7.6 7.4 1.8 10.4-9.4-4.9-9.4 4.9 1.8-10.4-7.6-7.4 10.5-1.5z"/>
+      </svg>
+    </div>
+    <p class="cp-kicker">عشرة أيام من النعيم · رفيقي في مصاحبة سورة الحج</p>
+    <h1 class="cp-title">شهادة إتمام</h1>
+    <div class="cp-divider"></div>
+    <p class="cp-intro">تشهد هذه الشهادة بأنّ</p>
+    <p class="cp-name" id="cp-name">—</p>
+    <p class="cp-body">قد أتمّ بحمد الله مدارسة <b>الورد الرابع</b> من سورة الحج (الآيات ٢٤–٣٠)،<br>عبر محطّاته السبع: الحفظ، ومعاني الغريب، والتجويد، والفهم والتدبّر، والسؤال التثويري، والمبادرة، وزاد المصاحب.</p>
+    <p class="cp-blessing">اللهُمَّ اجعَلْنا مِن أهلِ القُرآنِ الذينَ هُم أهلُكَ وخاصّتُكَ</p>
+    <div class="cp-footer">
+      <span class="cp-seal">الزُّلفة ٢</span>
+      <span class="cp-date" id="cp-date"></span>
+    </div>
+  </div>
+</div>
 
 <canvas id="confetti-canvas"></canvas>
 <div id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="toast-text"></span></div>
@@ -1150,7 +1208,7 @@ footer .crescent-sm svg{width:34px;fill:var(--gold)}
     ring.style.strokeDashoffset = circ * (1 - count/TARGET);
     roundsTag.textContent = 'الجولات المكتملة: ' + arNum(rounds);
   }
-  document.getElementById('count-btn').addEventListener('click', ()=>{
+  document.querySelector('.counter-stage').addEventListener('click', ()=>{
     count++;
     if(navigator.vibrate) navigator.vibrate(12);
     if(count >= TARGET){
@@ -1184,8 +1242,44 @@ footer .crescent-sm svg{width:34px;fill:var(--gold)}
   try{ const sv = localStorage.getItem(nameKey); if(sv) nameInput.value = sv; }catch(e){}
   nameInput.addEventListener('input', ()=>{ try{ localStorage.setItem(nameKey, nameInput.value); }catch(e){} });
   document.getElementById('celebrate-btn').addEventListener('click', ()=>{
-    fireConfetti(); showToast('تقبّل الله منك ومنّا 🤍');
+    var name = (nameInput.value || '').trim();
+    if(!name){
+      nameInput.focus();
+      showToast('✦ اكتب اسمك في الشهادة أوّلًا');
+      return;
+    }
+    fireConfetti();
+    generateCertificatePDF(name);
   });
+
+  function generateCertificatePDF(name){
+    var node = document.getElementById('cert-pdf');
+    document.getElementById('cp-name').textContent = name;
+    var months = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+    var d = new Date();
+    document.getElementById('cp-date').textContent = 'بتاريخ: ' + arNum(d.getDate()) + ' ' + months[d.getMonth()] + ' ' + arNum(d.getFullYear());
+
+    if(!(window.html2canvas && window.jspdf)){
+      showToast('تعذّر تجهيز PDF — تأكّد من الاتصال بالإنترنت');
+      return;
+    }
+    showToast('… جارٍ تجهيز شهادتك');
+    var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    fontsReady.then(function(){
+      return html2canvas(node, {scale:2.5, backgroundColor:'#f7f3e9', useCORS:true, logging:false});
+    }).then(function(canvas){
+      var jsPDF = window.jspdf.jsPDF;
+      var pdf = new jsPDF({orientation:'landscape', unit:'mm', format:'a4', compress:true});
+      var pw = pdf.internal.pageSize.getWidth(), ph = pdf.internal.pageSize.getHeight();
+      var cr = canvas.width / canvas.height, pr = pw / ph, w, h;
+      if(cr > pr){ w = pw; h = pw / cr; } else { h = ph; w = ph * cr; }
+      pdf.addImage(canvas.toDataURL('image/jpeg', 0.95), 'JPEG', (pw-w)/2, (ph-h)/2, w, h);
+      pdf.save('شهادة-الزلفة٢-الورد-الرابع.pdf');
+      showToast('✓ تم تنزيل شهادتك');
+    }).catch(function(){
+      showToast('تعذّر إنشاء PDF — حاول مرّة أخرى');
+    });
+  }
 
   /* ---------- Confetti ---------- */
   const canvas = document.getElementById('confetti-canvas');
