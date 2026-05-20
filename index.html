@@ -1077,7 +1077,7 @@ footer .crescent-sm svg{width:34px;fill:var(--gold)}
         if(b) b.classList.add('active');
       }
     });
-  }, {threshold:.5});
+  }, {rootMargin:'-50% 0px -50% 0px', threshold:0});
   navTargets.forEach(s=>navObserver.observe(s));
 
   /* ---------- Reveal on scroll ---------- */
