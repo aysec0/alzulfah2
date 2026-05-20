@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>الزلفة 2 · الورد الرابع — رفيقي في مصاحبة سورة الحج</title>
+<meta name="description" content="رحلة تفاعلية مع الورد الرابع من سورة الحج (٢٤–٣٠): حفظ، وغريب، وتجويد، وتدبر، ومبادرة." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;500;600;700;900&family=Reem+Kufi:wght@400;500;600;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-950:#072017;
+  --green-900:#0a2e22;
+  --green-800:#0d3b2e;
+  --green-700:#13503c;
+  --green-600:#1a6349;
+  --cream:#f7f3e9;
+  --cream-2:#efe7d4;
+  --paper:#fdfbf4;
+  --gold:#c6a256;
+  --gold-light:#e3cb8c;
+  --gold-deep:#a8843f;
+  --ink:#1b2a23;
+  --muted:#5c6b62;
+  --shadow-sm:0 4px 16px rgba(7,32,23,.08);
+  --shadow-md:0 14px 40px rgba(7,32,23,.16);
+  --shadow-lg:0 26px 70px rgba(7,32,23,.28);
+  --font-quran:'Amiri',serif;
+  --font-display:'Reem Kufi','Aref Ruqaa',serif;
+  --font-script:'Aref Ruqaa',serif;
+  --font-body:'Cairo',sans-serif;
+  --r:22px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.85;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--gold);color:var(--green-900)}
+img{max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+/* ---------- Decorative star pattern ---------- */
+.pattern-bg{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23c6a256' stroke-width='1' opacity='0.5'%3E%3Cpath d='M40 8 L48 32 L72 40 L48 48 L40 72 L32 48 L8 40 L32 32 Z'/%3E%3Ccircle cx='40' cy='40' r='3'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ---------- Scroll progress ---------- */
+#progress-bar{
+  position:fixed;top:0;right:0;height:4px;width:0%;
+  background:linear-gradient(90deg,var(--gold-deep),var(--gold-light),var(--gold));
+  z-index:1000;box-shadow:0 0 14px rgba(198,162,86,.7);transition:width .1s linear;
+}
+
+/* ---------- Journey side-nav ---------- */
+#journey{
+  position:fixed;top:50%;left:22px;transform:translateY(-50%);
+  z-index:900;display:flex;flex-direction:column;gap:14px;
+}
+#journey button{
+  position:relative;width:14px;height:14px;border-radius:50%;
+  background:rgba(13,59,46,.22);transition:.3s;display:flex;align-items:center;
+}
+#journey button::after{
+  content:attr(data-label);position:absolute;left:24px;white-space:nowrap;
+  background:var(--green-800);color:var(--cream);font-size:.74rem;font-family:var(--font-body);
+  padding:5px 12px;border-radius:30px;opacity:0;pointer-events:none;transition:.25s;
+  transform:translateX(8px);box-shadow:var(--shadow-sm);font-weight:600;
+}
+#journey button:hover::after{opacity:1;transform:translateX(0)}
+#journey button:hover{background:var(--gold)}
+#journey button.active{background:var(--gold);box-shadow:0 0 0 5px rgba(198,162,86,.22);transform:scale(1.15)}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-weight:700;
+  padding:14px 30px;border-radius:50px;transition:.3s;font-size:1rem;
+}
+.btn-gold{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--green-900);box-shadow:0 10px 26px rgba(198,162,86,.4)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(198,162,86,.55)}
+.btn-ghost{border:2px solid rgba(247,243,233,.4);color:var(--cream)}
+.btn-ghost:hover{background:rgba(247,243,233,.12);border-color:var(--gold)}
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;position:relative;overflow:hidden;padding:60px 20px;
+  background:radial-gradient(circle at 50% 18%,var(--green-700),var(--green-900) 55%,var(--green-950));
+}
+.hero .pattern-overlay{position:absolute;inset:0;opacity:.10;pointer-events:none}
+.hero .glow{
+  position:absolute;width:560px;height:560px;border-radius:50%;
+  background:radial-gradient(circle,rgba(198,162,86,.28),transparent 65%);
+  top:-120px;filter:blur(30px);animation:floaty 9s ease-in-out infinite;
+}
+.stars{position:absolute;inset:0;pointer-events:none}
+.stars i{position:absolute;background:var(--gold-light);border-radius:50%;opacity:.7;animation:twinkle 3s infinite}
+
+.crescent{
+  width:120px;height:120px;margin-bottom:26px;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(247,243,233,.95);border-radius:30px;
+  box-shadow:0 20px 60px rgba(0,0,0,.4), inset 0 0 0 1px rgba(198,162,86,.4);
+  animation:floaty 6s ease-in-out infinite;
+}
+.crescent svg{width:74px;height:74px}
+
+.kicker{
+  color:var(--gold-light);font-family:var(--font-body);font-weight:600;letter-spacing:2px;
+  font-size:.95rem;margin-bottom:14px;padding:7px 20px;border:1px solid rgba(198,162,86,.4);
+  border-radius:40px;background:rgba(198,162,86,.08);
+}
+.hero h1{
+  font-family:var(--font-script);font-weight:700;color:var(--cream);
+  font-size:clamp(3.2rem,11vw,7rem);line-height:1;margin:6px 0 4px;
+  text-shadow:0 6px 30px rgba(0,0,0,.4);
+}
+.hero h1 .num{color:var(--gold);}
+.hero .subtitle{
+  font-family:var(--font-display);color:var(--gold-light);font-size:clamp(1.2rem,4vw,1.9rem);
+  font-weight:500;margin-bottom:8px;
+}
+.hero .verse-ref{
+  color:rgba(247,243,233,.75);font-size:1.05rem;margin-bottom:34px;font-weight:300;letter-spacing:1px;
+}
+.hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.scroll-hint{position:absolute;bottom:28px;color:rgba(247,243,233,.6);font-size:.85rem;animation:bob 2s infinite;display:flex;flex-direction:column;align-items:center;gap:6px}
+.scroll-hint svg{width:22px;height:22px}
+
+/* ---------- Section frame ---------- */
+.section{padding:clamp(70px,10vw,120px) 20px;position:relative}
+.wrap{max-width:1080px;margin:0 auto}
+.sec-cream{background:var(--cream)}
+.sec-paper{background:linear-gradient(180deg,var(--paper),var(--cream))}
+.sec-green{background:radial-gradient(circle at 80% 0%,var(--green-700),var(--green-900));color:var(--cream)}
+.sec-green .sec-title,.sec-green .sec-num{color:var(--cream)}
+
+.sec-head{text-align:center;margin-bottom:56px}
+.sec-num{
+  display:inline-flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;
+  font-family:var(--font-display);font-weight:700;font-size:1.5rem;margin-bottom:18px;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--green-900);
+  box-shadow:var(--shadow-sm);
+}
+.sec-title{font-family:var(--font-display);font-weight:700;font-size:clamp(1.9rem,5vw,2.9rem);color:var(--green-800);line-height:1.2}
+.sec-sub{color:var(--muted);font-size:1.05rem;margin-top:10px;max-width:560px;margin-inline:auto}
+.sec-green .sec-sub{color:rgba(247,243,233,.75)}
+.divider{width:90px;height:3px;margin:18px auto 0;border-radius:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+
+/* reveal anim */
+.reveal{opacity:0;transform:translateY(40px);transition:.8s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+
+/* ---------- Cards ---------- */
+.card{background:var(--paper);border-radius:var(--r);box-shadow:var(--shadow-sm);border:1px solid rgba(198,162,86,.18);position:relative;overflow:hidden}
+
+/* ---------- Verse / Mushaf ---------- */
+.mushaf{
+  background:linear-gradient(160deg,var(--paper),var(--cream-2));
+  border-radius:var(--r);padding:clamp(28px,5vw,52px);position:relative;
+  box-shadow:var(--shadow-md);border:2px solid rgba(198,162,86,.3);margin-bottom:26px;
+}
+.mushaf::before,.mushaf::after{content:"";position:absolute;width:46px;height:46px;border:3px solid var(--gold);opacity:.55}
+.mushaf::before{top:14px;right:14px;border-left:0;border-bottom:0;border-radius:0 14px 0 0}
+.mushaf::after{bottom:14px;left:14px;border-right:0;border-top:0;border-radius:0 0 0 14px}
+.verse-tag{
+  display:inline-block;background:var(--green-700);color:var(--gold-light);font-family:var(--font-body);
+  font-weight:600;font-size:.85rem;padding:5px 16px;border-radius:30px;margin-bottom:20px;
+}
+.ayah{
+  font-family:var(--font-quran);font-size:clamp(1.65rem,4.6vw,2.5rem);line-height:2.4;
+  color:var(--green-900);text-align:center;font-weight:700;
+}
+.ayah .hl{color:var(--gold-deep);cursor:help;position:relative;transition:.3s;border-radius:6px;padding:0 3px}
+.ayah .hl:hover{background:rgba(198,162,86,.18)}
+.ayah .blank{
+  background:var(--green-700);color:transparent;border-radius:8px;padding:0 6px;cursor:pointer;
+  user-select:none;transition:.3s;box-shadow:inset 0 -3px 0 var(--gold);
+}
+.ayah .blank.show{background:transparent;color:var(--gold-deep);box-shadow:none}
+.ayah-end{
+  font-family:var(--font-quran);color:var(--gold);font-size:1.4em;
+}
+.memo-tools{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.chip-btn{
+  display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:50px;font-weight:600;font-size:.95rem;
+  background:var(--green-800);color:var(--cream);transition:.3s;
+}
+.chip-btn:hover{background:var(--green-700);transform:translateY(-2px)}
+.chip-btn.active{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--green-900)}
+.hint-line{text-align:center;color:var(--muted);font-size:.92rem;margin-top:14px;min-height:1.2em}
+
+/* ---------- Flashcards ---------- */
+.flash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.flashcard{height:240px;perspective:1400px;cursor:pointer}
+.flash-inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
+.flashcard.flipped .flash-inner{transform:rotateY(180deg)}
+.flash-face{
+  position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px;text-align:center;
+  box-shadow:var(--shadow-md);
+}
+.flash-front{background:linear-gradient(155deg,var(--green-700),var(--green-900));color:var(--cream);border:1px solid rgba(198,162,86,.3)}
+.flash-back{background:linear-gradient(155deg,var(--paper),var(--cream-2));color:var(--ink);transform:rotateY(180deg);border:2px solid var(--gold)}
+.flash-badge{position:absolute;top:14px;right:14px;font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:30px;letter-spacing:.5px}
+.badge-match{background:rgba(198,162,86,.25);color:var(--gold-light)}
+.badge-explain{background:var(--green-700);color:var(--gold-light)}
+.flash-front .word{font-family:var(--font-quran);font-size:2rem;font-weight:700;color:var(--gold-light)}
+.flash-front .meaning-prompt{font-family:var(--font-quran);font-size:1.5rem;line-height:1.8}
+.flash-back .label{font-size:.78rem;color:var(--gold-deep);font-weight:700;margin-bottom:8px;letter-spacing:.5px}
+.flash-back .answer{font-family:var(--font-quran);font-size:1.4rem;color:var(--green-800);font-weight:700;margin-bottom:6px}
+.flash-back .detail{font-size:.92rem;color:var(--muted);line-height:1.7}
+.flash-flip-hint{position:absolute;bottom:12px;font-size:.72rem;opacity:.6;width:100%;left:0;text-align:center}
+
+/* ---------- Tajweed ---------- */
+.tj-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.tj-card{background:var(--paper);border-radius:var(--r);padding:30px;box-shadow:var(--shadow-sm);border:1px solid rgba(198,162,86,.2);border-top:5px solid var(--gold)}
+.tj-card h3{font-family:var(--font-display);color:var(--green-800);font-size:1.5rem;margin-bottom:6px}
+.tj-card .tj-def{color:var(--muted);font-size:.95rem;margin-bottom:18px}
+.tj-examples{display:flex;flex-direction:column;gap:12px;margin-bottom:18px}
+.tj-ex{
+  background:var(--cream);border-radius:14px;padding:14px 18px;font-family:var(--font-quran);
+  font-size:1.7rem;text-align:center;color:var(--green-900);border:1px dashed rgba(198,162,86,.5);font-weight:700;
+}
+.tj-ex .madd{color:#b03b3b}
+.tj-ex .izhar{color:#1a6349;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:6px}
+.tj-ex .nun{color:var(--gold-deep)}
+.matn{
+  background:linear-gradient(155deg,var(--green-800),var(--green-900));color:var(--cream);
+  border-radius:14px;padding:18px;font-family:var(--font-quran);font-size:1.18rem;line-height:2.3;
+  text-align:center;max-height:0;overflow:hidden;opacity:0;transition:.5s;
+}
+.matn.open{max-height:300px;opacity:1;margin-top:8px;padding:18px}
+.matn .sep{color:var(--gold)}
+.matn small{display:block;color:var(--gold-light);font-family:var(--font-body);font-size:.82rem;margin-top:10px;font-weight:300}
+.tj-reveal-btn{width:100%;justify-content:center;background:var(--green-700);color:var(--cream);margin-top:4px}
+.tj-reveal-btn:hover{background:var(--green-600)}
+
+/* quiz */
+.quiz{margin-top:18px;background:var(--cream);border-radius:14px;padding:18px;border:1px solid rgba(198,162,86,.2)}
+.quiz p{font-weight:600;color:var(--green-800);margin-bottom:12px;font-size:.98rem}
+.quiz-opts{display:flex;gap:10px;flex-wrap:wrap}
+.quiz-opt{
+  font-family:var(--font-quran);font-size:1.3rem;font-weight:700;padding:8px 18px;border-radius:12px;
+  background:var(--paper);border:2px solid rgba(198,162,86,.3);transition:.25s;color:var(--green-900);
+}
+.quiz-opt:hover{border-color:var(--gold)}
+.quiz-opt.correct{background:#1a6349;color:#fff;border-color:#1a6349}
+.quiz-opt.wrong{background:#b03b3b;color:#fff;border-color:#b03b3b;animation:shake .4s}
+.quiz-feedback{margin-top:10px;font-size:.9rem;font-weight:600;min-height:1.2em}
+
+/* ---------- Tadabbur ---------- */
+.tadabbur{
+  background:linear-gradient(160deg,var(--paper),var(--cream-2));border-radius:var(--r);
+  padding:clamp(28px,5vw,50px);box-shadow:var(--shadow-md);border:1px solid rgba(198,162,86,.25);position:relative;
+}
+.heart-badge{
+  display:inline-flex;align-items:center;gap:10px;background:var(--green-800);color:var(--gold-light);
+  padding:10px 24px;border-radius:50px;font-weight:700;margin-bottom:24px;font-size:1.05rem;
+}
+.heart-badge svg{width:22px;height:22px}
+.tadabbur p{margin-bottom:16px;font-size:1.08rem;color:#2a3a31}
+.tadabbur .quran-inline{font-family:var(--font-quran);color:var(--green-700);font-weight:700}
+.tadabbur .lead{font-family:var(--font-display);font-size:1.3rem;color:var(--green-800);font-weight:600}
+.reflect-box{margin-top:26px;background:var(--green-800);border-radius:var(--r);padding:26px;color:var(--cream)}
+.reflect-box label{display:block;font-weight:600;margin-bottom:10px;color:var(--gold-light)}
+.reflect-box textarea{
+  width:100%;border-radius:14px;border:1px solid rgba(198,162,86,.4);background:rgba(247,243,233,.06);
+  color:var(--cream);padding:14px;font-family:var(--font-body);font-size:1rem;resize:vertical;min-height:90px;
+}
+.reflect-box textarea::placeholder{color:rgba(247,243,233,.4)}
+.reflect-box .save-row{display:flex;align-items:center;gap:12px;margin-top:12px}
+.saved-tag{color:var(--gold-light);font-size:.85rem;opacity:0;transition:.3s}
+.saved-tag.show{opacity:1}
+
+/* ---------- Accordion (thinking Q & sujood) ---------- */
+.qbox{display:flex;flex-direction:column;gap:18px}
+.qitem{background:var(--paper);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow:hidden;border:1px solid rgba(198,162,86,.2)}
+.sec-green .qitem{background:rgba(247,243,233,.06);border-color:rgba(198,162,86,.25)}
+.qhead{display:flex;align-items:center;gap:16px;padding:24px 26px;cursor:pointer;transition:.25s}
+.qhead:hover{background:rgba(198,162,86,.08)}
+.q-icon{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--green-900);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem}
+.qhead .q-text{flex:1;font-weight:600;font-size:1.1rem;color:var(--green-800)}
+.sec-green .qhead .q-text{color:var(--cream)}
+.qhead .q-text .quran-inline{font-family:var(--font-quran);font-weight:700;color:var(--gold-deep)}
+.sec-green .qhead .q-text .quran-inline{color:var(--gold-light)}
+.q-toggle{flex-shrink:0;width:30px;height:30px;border-radius:50%;border:2px solid var(--gold);color:var(--gold-deep);display:flex;align-items:center;justify-content:center;font-size:1.3rem;transition:.35s}
+.sec-green .q-toggle{color:var(--gold-light)}
+.qitem.open .q-toggle{transform:rotate(45deg);background:var(--gold);color:var(--green-900)}
+.qbody{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.qbody-inner{padding:0 26px 26px;color:#33433a;font-size:1.05rem}
+.sec-green .qbody-inner{color:rgba(247,243,233,.85)}
+.qbody-inner .hadith{font-family:var(--font-quran);font-size:1.2rem;color:var(--green-700);background:var(--cream);padding:14px 18px;border-radius:12px;border-right:4px solid var(--gold);margin-top:6px}
+.sec-green .qbody-inner .hadith{color:var(--gold-light);background:rgba(7,32,23,.4)}
+.think-first{font-size:.85rem;color:var(--gold-deep);font-weight:600;margin-bottom:4px}
+
+/* ---------- Tasbih ---------- */
+.tasbih-wrap{display:flex;flex-direction:column;align-items:center;gap:8px}
+.dhikr-card{
+  background:rgba(247,243,233,.08);border:1px solid rgba(198,162,86,.3);border-radius:var(--r);
+  padding:24px 30px;text-align:center;margin-bottom:34px;max-width:680px;
+}
+.dhikr-card .hadith-q{font-family:var(--font-quran);font-size:clamp(1.3rem,3.6vw,1.7rem);color:var(--gold-light);line-height:2.1}
+.dhikr-card .src{color:rgba(247,243,233,.6);font-size:.85rem;margin-top:10px}
+.counter-stage{position:relative;width:260px;height:260px;display:flex;align-items:center;justify-content:center}
+.ring{transform:rotate(-90deg);position:absolute;inset:0}
+.ring circle{fill:none;stroke-width:10;stroke-linecap:round}
+.ring .track{stroke:rgba(247,243,233,.12)}
+.ring .fill{stroke:url(#goldgrad);stroke-dasharray:710;stroke-dashoffset:710;transition:stroke-dashoffset .35s}
+.count-btn{
+  width:200px;height:200px;border-radius:50%;background:linear-gradient(155deg,var(--gold-light),var(--gold-deep));
+  color:var(--green-900);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  box-shadow:0 16px 44px rgba(198,162,86,.45), inset 0 2px 10px rgba(255,255,255,.4);transition:.12s;user-select:none;
+}
+.count-btn:active{transform:scale(.94)}
+.count-btn .num{font-size:4rem;font-weight:900;line-height:1;font-family:var(--font-body)}
+.count-btn .of{font-size:1rem;font-weight:600;opacity:.7}
+.count-btn .tap{font-size:.8rem;margin-top:6px;opacity:.65;letter-spacing:1px}
+.tasbih-meta{display:flex;gap:16px;align-items:center;margin-top:26px;flex-wrap:wrap;justify-content:center}
+.dhikr-toggle{display:flex;background:rgba(247,243,233,.08);border-radius:50px;padding:5px;gap:4px}
+.dhikr-toggle button{padding:9px 18px;border-radius:50px;font-family:var(--font-quran);font-size:1.15rem;font-weight:700;color:rgba(247,243,233,.7);transition:.25s}
+.dhikr-toggle button.active{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--green-900)}
+.reset-btn{display:inline-flex;align-items:center;gap:8px;color:rgba(247,243,233,.7);font-weight:600;padding:9px 16px;border-radius:50px;border:1px solid rgba(247,243,233,.25);transition:.25s}
+.reset-btn:hover{color:var(--cream);border-color:var(--gold)}
+.rounds-tag{color:var(--gold-light);font-weight:700;font-size:.95rem}
+.mubadara-note{max-width:620px;text-align:center;margin:34px auto 0;color:rgba(247,243,233,.8);font-size:1.02rem}
+.mubadara-note .quran-inline{font-family:var(--font-quran);color:var(--gold-light);font-weight:700}
+
+/* ---------- Zad (stations) ---------- */
+.station-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.station{
+  background:var(--paper);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-md);
+  border:1px solid rgba(198,162,86,.2);transition:.4s;
+}
+.station:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.station-top{background:linear-gradient(135deg,var(--green-700),var(--green-900));padding:30px;color:var(--cream);position:relative;overflow:hidden}
+.station-top .pattern-overlay{position:absolute;inset:0;opacity:.12}
+.station-top .st-num{font-family:var(--font-display);color:var(--gold-light);font-size:.9rem;font-weight:600;position:relative}
+.station-top h3{font-family:var(--font-display);font-size:1.6rem;margin-top:6px;position:relative}
+.station-body{padding:28px}
+.station-body p{color:#33433a;font-size:1.05rem;margin-bottom:14px}
+.athar{
+  font-family:var(--font-quran);font-size:1.18rem;line-height:2;color:var(--green-800);
+  background:var(--cream);border-radius:14px;padding:16px 18px;border-right:4px solid var(--gold);
+}
+.athar .src{display:block;font-family:var(--font-body);font-size:.82rem;color:var(--gold-deep);margin-top:8px;font-weight:600}
+
+/* ---------- Sujood bonus ---------- */
+.bonus-banner{
+  display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  color:var(--green-900);font-weight:700;padding:8px 22px;border-radius:50px;margin-bottom:18px;font-size:.95rem;
+}
+.cond-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-bottom:46px}
+.cond{
+  background:rgba(247,243,233,.06);border:1px solid rgba(198,162,86,.3);border-radius:var(--r);padding:30px 24px;
+  text-align:center;transition:.35s;
+}
+.cond:hover{transform:translateY(-5px);background:rgba(247,243,233,.1)}
+.cond .ic{width:64px;height:64px;margin:0 auto 16px;border-radius:50%;background:rgba(198,162,86,.18);display:flex;align-items:center;justify-content:center}
+.cond .ic svg{width:32px;height:32px;stroke:var(--gold-light)}
+.cond h4{font-family:var(--font-display);color:var(--cream);font-size:1.35rem;margin-bottom:10px}
+.cond p{color:rgba(247,243,233,.78);font-size:.96rem;line-height:1.75}
+
+.steps{position:relative;max-width:760px;margin:0 auto 46px;padding-right:34px}
+.steps::before{content:"";position:absolute;right:15px;top:6px;bottom:6px;width:3px;background:linear-gradient(180deg,var(--gold),rgba(198,162,86,.2))}
+.step{position:relative;padding:0 0 28px 0;}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;right:-26px;top:2px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--green-900);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 0 0 5px var(--green-900)}
+.step .step-body{background:rgba(247,243,233,.06);border:1px solid rgba(198,162,86,.25);border-radius:16px;padding:18px 22px;margin-right:24px}
+.step .step-body strong{color:var(--gold-light)}
+.step .step-body p{color:rgba(247,243,233,.85)}
+.step.warn .step-body{background:rgba(198,162,86,.12);border-color:var(--gold)}
+
+.dua-card{background:var(--paper);border-radius:var(--r);padding:clamp(26px,5vw,44px);text-align:center;box-shadow:var(--shadow-md);max-width:760px;margin:0 auto;border:2px solid var(--gold)}
+.dua-card .label{font-family:var(--font-display);color:var(--gold-deep);font-size:1rem;font-weight:600;margin-bottom:6px}
+.dua-card .line{width:60px;height:2px;background:var(--gold);margin:0 auto 22px}
+.dua-card .dua{font-family:var(--font-quran);font-size:clamp(1.4rem,4vw,2rem);line-height:2.3;color:var(--green-900);font-weight:700}
+.dua-card .alt{margin-top:22px;color:var(--muted);font-size:1rem}
+.dua-card .alt b{font-family:var(--font-quran);color:var(--green-700);font-size:1.3rem}
+
+/* ---------- Completion ---------- */
+.finish{background:radial-gradient(circle at 50% 0%,var(--green-700),var(--green-950));color:var(--cream);text-align:center;position:relative;overflow:hidden}
+.finish .pattern-overlay{position:absolute;inset:0;opacity:.08}
+.checklist{max-width:560px;margin:0 auto 40px;display:flex;flex-direction:column;gap:12px;position:relative}
+.check-item{display:flex;align-items:center;gap:14px;background:rgba(247,243,233,.06);border:1px solid rgba(198,162,86,.2);border-radius:16px;padding:14px 20px;transition:.4s;text-align:right}
+.check-item.done{background:rgba(26,99,73,.35);border-color:var(--green-600)}
+.check-box{width:30px;height:30px;border-radius:50%;border:2px solid rgba(198,162,86,.5);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.4s}
+.check-item.done .check-box{background:linear-gradient(135deg,var(--gold-light),var(--gold));border-color:var(--gold)}
+.check-box svg{width:16px;height:16px;stroke:var(--green-900);opacity:0;transition:.3s}
+.check-item.done .check-box svg{opacity:1}
+.check-item .ci-label{font-weight:600;flex:1}
+.check-item .ci-num{color:var(--gold-light);font-weight:700;font-family:var(--font-display)}
+
+.cert{
+  background:linear-gradient(160deg,var(--paper),var(--cream-2));border-radius:var(--r);padding:clamp(28px,5vw,46px);
+  max-width:620px;margin:0 auto;color:var(--ink);box-shadow:var(--shadow-lg);border:3px double var(--gold);position:relative;
+}
+.cert h3{font-family:var(--font-script);color:var(--green-800);font-size:2rem;margin-bottom:6px}
+.cert .cert-sub{color:var(--muted);margin-bottom:22px}
+.name-input{
+  width:100%;max-width:340px;text-align:center;font-family:var(--font-script);font-size:1.6rem;color:var(--green-800);
+  border:none;border-bottom:2px dashed var(--gold);background:transparent;padding:8px;margin:0 auto 22px;display:block;font-weight:700;
+}
+.name-input:focus{outline:none;border-bottom-color:var(--green-700)}
+.name-input::placeholder{color:rgba(168,132,63,.5)}
+.cert .blessing{font-family:var(--font-quran);font-size:1.3rem;color:var(--green-700);line-height:2;margin-bottom:22px}
+.progress-text{font-size:1.1rem;margin-bottom:26px;color:var(--gold-light);font-weight:600}
+
+footer{background:var(--green-950);color:rgba(247,243,233,.6);text-align:center;padding:36px 20px;font-size:.9rem}
+footer .crescent-sm{width:34px;height:34px;margin:0 auto 12px;opacity:.8}
+footer .crescent-sm svg{width:34px;fill:var(--gold)}
+
+#confetti-canvas{position:fixed;inset:0;pointer-events:none;z-index:2000}
+
+/* toast */
+#toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--green-800);color:var(--cream);padding:14px 28px;border-radius:50px;box-shadow:var(--shadow-lg);z-index:1500;transition:.4s;font-weight:600;border:1px solid var(--gold);display:flex;align-items:center;gap:10px}
+#toast.show{transform:translateX(-50%) translateY(0)}
+#toast svg{width:20px;height:20px;stroke:var(--gold-light)}
+
+/* ---------- Animations ---------- */
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:.9;transform:scale(1.2)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+
+/* ---------- Responsive ---------- */
+@media(max-width:760px){
+  #journey{display:none}
+  .tj-grid,.station-grid{grid-template-columns:1fr}
+  .counter-stage{width:230px;height:230px}
+  .count-btn{width:180px;height:180px}
+  .count-btn .num{font-size:3.2rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- Journey side nav -->
+<nav id="journey" aria-label="رحلة الورد"></nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="pattern-overlay pattern-bg"></div>
+  <div class="glow"></div>
+  <div class="stars" id="stars"></div>
+
+  <div class="crescent reveal in">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <defs><mask id="cmask-hero">
+        <rect width="100" height="100" fill="#000"/>
+        <circle cx="44" cy="50" r="37" fill="#fff"/>
+        <circle cx="62" cy="44" r="31" fill="#000"/>
+      </mask></defs>
+      <rect width="100" height="100" fill="#2a2a6a" mask="url(#cmask-hero)"/>
+      <path fill="#2a2a6a" d="M70 38l4.7 9.5 10.5 1.5-7.6 7.4 1.8 10.4-9.4-4.9-9.4 4.9 1.8-10.4-7.6-7.4 10.5-1.5z"/>
+    </svg>
+  </div>
+
+  <span class="kicker reveal in d1">عشرة أيام من النعيم · رفيقي في مصاحبة سورة الحج</span>
+  <h1 class="reveal in d1">الزُّلفة <span class="num">٢</span></h1>
+  <p class="subtitle reveal in d2">الوِرْد الرابع</p>
+  <p class="verse-ref reveal in d2">سورة الحج · الآيات ٢٤ – ٣٠</p>
+
+  <div class="cta-row reveal in d3">
+    <a href="#hifz" class="btn btn-gold">
+      ابدأ الرحلة
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="#finish" class="btn btn-ghost">شهادة الإتمام</a>
+  </div>
+
+  <div class="scroll-hint">
+    <span>اسحب للأسفل</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</header>
+
+<!-- ============ 1 · الحفظ ============ -->
+<section class="section sec-paper" id="hifz" data-label="الحفظ">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">١</span>
+      <h2 class="sec-title">الحِفْظ</h2>
+      <p class="sec-sub">آيتا الورد — جرّب وضع «اختبار الحفظ» لإخفاء الكلمات المحورية ثم اكشفها بلمسة.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="mushaf reveal d1">
+      <span class="verse-tag">الآية ٢٤</span>
+      <p class="ayah" data-ayah>
+        وَهُدُوا إِلَى الطَّيِّبِ <span class="hl" data-key>مِنَ الْقَوْلِ</span> وَهُدُوا إِلَىٰ <span class="hl" data-key>صِرَاطِ الْحَمِيدِ</span>
+        <span class="ayah-end">﴿٢٤﴾</span>
+      </p>
+    </div>
+
+    <div class="mushaf reveal d2">
+      <span class="verse-tag">الآية ٣٠</span>
+      <p class="ayah" data-ayah>
+        ذَٰلِكَ وَمَن يُعَظِّمْ حُرُمَاتِ اللَّهِ فَهُوَ خَيْرٌ لَّهُ عِندَ رَبِّهِ ۗ وَأُحِلَّتْ لَكُمُ الْأَنْعَامُ إِلَّا مَا يُتْلَىٰ عَلَيْكُمْ ۖ
+        <span class="hl" data-key>فَاجْتَنِبُوا الرِّجْسَ مِنَ الْأَوْثَانِ</span> <span class="hl" data-key>وَاجْتَنِبُوا قَوْلَ الزُّورِ</span>
+        <span class="ayah-end">﴿٣٠﴾</span>
+      </p>
+    </div>
+
+    <div class="memo-tools reveal d2">
+      <button class="chip-btn" id="memo-toggle">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        اختبار الحفظ
+      </button>
+      <button class="chip-btn" id="reveal-all">اكشف الكل</button>
+    </div>
+    <p class="hint-line" id="memo-hint"></p>
+  </div>
+</section>
+
+<!-- ============ 2 · معاني الغريب ============ -->
+<section class="section sec-cream" id="gharib" data-label="معاني الغريب">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">٢</span>
+      <h2 class="sec-title">معاني الغريب</h2>
+      <p class="sec-sub">بطاقات تفاعلية — انقر البطاقة لتقلبها وتكشف الإجابة. اقلبها كلها لتُكمل المحطة.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="flash-grid">
+      <!-- card 1 -->
+      <div class="flashcard reveal d1" data-flash>
+        <div class="flash-inner">
+          <div class="flash-face flash-front">
+            <span class="flash-badge badge-match">طابِق الكلمة</span>
+            <span class="meaning-prompt">بُهْم</span>
+            <span class="flash-flip-hint">انقر لكشف الكلمة القرآنية</span>
+          </div>
+          <div class="flash-face flash-back">
+            <span class="flash-badge badge-match">طابِق الكلمة</span>
+            <span class="label">الكلمة في القرآن</span>
+            <span class="answer">﴿بَهِيمَةِ الْأَنْعَام﴾</span>
+            <span class="detail">أي: الأنعام (الإبل والبقر والغنم).</span>
+          </div>
+        </div>
+      </div>
+      <!-- card 2 -->
+      <div class="flashcard reveal d2" data-flash>
+        <div class="flash-inner">
+          <div class="flash-face flash-front">
+            <span class="flash-badge badge-match">طابِق الكلمة</span>
+            <span class="meaning-prompt">البعير خفيف اللحم من كثرة السفر والتعب، لا من الهُزال</span>
+          </div>
+          <div class="flash-face flash-back">
+            <span class="flash-badge badge-match">طابِق الكلمة</span>
+            <span class="label">الكلمة في القرآن</span>
+            <span class="answer">﴿ضَامِرٍ﴾</span>
+            <span class="detail">من قوله: ﴿وَعَلَىٰ كُلِّ ضَامِرٍ﴾.</span>
+          </div>
+        </div>
+      </div>
+      <!-- card 3 -->
+      <div class="flashcard reveal d3" data-flash>
+        <div class="flash-inner">
+          <div class="flash-face flash-front">
+            <span class="flash-badge badge-explain">بيّن المعنى</span>
+            <span class="word">لِيَقْضُوا تَفَثَهُمْ</span>
+            <span class="flash-flip-hint">انقر لكشف المعنى</span>
+          </div>
+          <div class="flash-face flash-back">
+            <span class="flash-badge badge-explain">بيّن المعنى</span>
+            <span class="detail">أي ليُزيلوا الشَّعَث والأوساخ التي لحقت بهم أثناء الإحرام، من حلق الشعر وقصّ الأظافر وخلع ثياب الإحرام والتحلل منه.</span>
+          </div>
+        </div>
+      </div>
+      <!-- card 4 -->
+      <div class="flashcard reveal d4" data-flash>
+        <div class="flash-inner">
+          <div class="flash-face flash-front">
+            <span class="flash-badge badge-explain">بيّن المعنى</span>
+            <span class="word">نُذُورَهُمْ</span>
+            <span class="flash-flip-hint">انقر لكشف المعنى</span>
+          </div>
+          <div class="flash-face flash-back">
+            <span class="flash-badge badge-explain">بيّن المعنى</span>
+            <span class="detail">هَدْيهم؛ والنَّذْر هو ما أوجبه الإنسان على نفسه لله تعالى من ذبائح وهَدْي وغيرها.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 · التجويد ============ -->
+<section class="section sec-green" id="tajweed" data-label="التجويد">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">٣</span>
+      <h2 class="sec-title">التجويد</h2>
+      <p class="sec-sub">حكمان من أحكام التلاوة في آيات الورد — اكشف المتن، وجرّب الاختبار السريع.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="tj-grid">
+      <!-- Madd -->
+      <div class="tj-card reveal d1">
+        <h3>المدّ الواجب المتّصل</h3>
+        <p class="tj-def">أن يأتي همزٌ بعد حرف المدّ في كلمةٍ واحدة، فيُمدّ وجوبًا.</p>
+        <div class="tj-examples">
+          <div class="tj-ex">سَوَ<span class="madd">ا</span><span class="madd">ءً</span></div>
+          <div class="tj-ex">لِلطَّ<span class="madd">ا</span><span class="madd">ئِ</span>فِينَ</div>
+        </div>
+        <button class="chip-btn tj-reveal-btn" data-matn>اكشف القاعدة من المتن</button>
+        <div class="matn" id="matn-madd">
+          لِلْمَدِّ أَحْكَامٌ ثَلاثَةٌ تَدُومْ <span class="sep">…</span> وَهْيَ الوُجُوبُ وَالجَوَازُ وَاللُّزُومْ<br>
+          فَوَاجِبٌ إِنْ جَاءَ هَمْزٌ بَعْدَ مَدْ <span class="sep">…</span> فِي كِلْمَةٍ وَذَا بِمُتَّصِلٍ يُعَدْ
+          <small>— من متن «تحفة الأطفال»</small>
+        </div>
+        <div class="quiz" data-quiz="madd">
+          <p>أيُّ الكلمات التالية فيها مدٌّ واجب متّصل؟</p>
+          <div class="quiz-opts">
+            <button class="quiz-opt" data-correct="false">قَوْل</button>
+            <button class="quiz-opt" data-correct="true">جَاءَ</button>
+            <button class="quiz-opt" data-correct="false">الحَمِيد</button>
+          </div>
+          <p class="quiz-feedback"></p>
+        </div>
+      </div>
+
+      <!-- Izhar -->
+      <div class="tj-card reveal d2">
+        <h3>الإظهار الحلقي</h3>
+        <p class="tj-def">إظهار النون الساكنة أو التنوين إذا جاء بعدها حرفٌ من حروف الحلق الستّة.</p>
+        <div class="tj-examples">
+          <div class="tj-ex">مَ<span class="nun">نْ</span> <span class="izhar">هَ</span>ادٍ</div>
+          <div class="tj-ex">فَجٍّ <span class="izhar">عَ</span>مِيقٍ</div>
+        </div>
+        <button class="chip-btn tj-reveal-btn" data-matn>اكشف القاعدة من المتن</button>
+        <div class="matn" id="matn-izhar">
+          لِلنُّونِ إِنْ تَسْكُنْ وَلِلتَّنْوِينِ <span class="sep">…</span> أَرْبَعُ أَحْكَامٍ فَخُذْ تَبْيِينِي<br>
+          فَالأَوَّلُ الإِظْهَارُ قَبْلَ أَحْرُفِ <span class="sep">…</span> لِلْحَلْقِ سِتٌّ رُتِّبَتْ فَلْتَعْرِفِ<br>
+          هَمْزٌ فَهَاءٌ ثُمَّ عَيْنٌ حَاءُ <span class="sep">…</span> مُهْمَلَتَانِ ثُمَّ غَيْنٌ خَاءُ
+          <small>حروف الحلق الستة: ء · هـ · ع · ح · غ · خ</small>
+        </div>
+        <div class="quiz" data-quiz="izhar">
+          <p>في أيِّ كلمةٍ يقع الإظهار الحلقي؟</p>
+          <div class="quiz-opts">
+            <button class="quiz-opt" data-correct="true">مَنْ هَادٍ</button>
+            <button class="quiz-opt" data-correct="false">مِن قَبْل</button>
+            <button class="quiz-opt" data-correct="false">أَنْعَام</button>
+          </div>
+          <p class="quiz-feedback"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · الفهم والتدبر ============ -->
+<section class="section sec-paper" id="tadabbur" data-label="الفهم والتدبر">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">٤</span>
+      <h2 class="sec-title">الفهم والتدبّر</h2>
+      <p class="sec-sub">صفة أُحبّها وأُحاول التحلّي بها</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="tadabbur reveal d1">
+      <span class="heart-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.5C.3 8 2 4.5 5.5 4.5c2 0 3.4 1.1 4.5 2.6 1.1-1.5 2.5-2.6 4.5-2.6C18 4.5 19.7 8 18 11.5 15.5 16.4 12 21 12 21z"/></svg>
+        تعظيم حُرُمات الله
+      </span>
+      <p class="lead">من قوله تعالى ﴿وَمَن يُعَظِّمْ حُرُمَاتِ اللَّهِ فَهُوَ خَيْرٌ لَّهُ عِندَ رَبِّهِ﴾ أُحبّ أن أتحلّى بصفة <strong>تعظيم حرمات الله</strong> في قلبي وجوارحي.</p>
+      <p>وتعظيم الحُرُمات يبدأ من القلب أوّلًا؛ فحين يَعظُم الله في قلب العبد، تَعظُم عنده أوامره فيؤدّيها بإجلال، وتَعظُم نواهيه فيتجنّبها بخشية، وتَعظُم شعائره وحدوده فلا يتهاون بها. وكلّما كبُر الله في القلب، صغُر ما سواه من شهوةٍ أو هوًى يدعو إلى مخالفة أمره.</p>
+      <p>والذي لفت قلبي في الآية أنّ الله جعل الخير معلّقًا بالعبد نفسه: <span class="quran-inline">﴿فَهُوَ خَيْرٌ لَّهُ﴾</span>؛ فتعظيمي لحرمات الله لا أنفع به ربّي — وهو الغنيّ عنّي — بل أنفع به نفسي، وأرفع به منزلتي <span class="quran-inline">﴿عِندَ رَبِّهِ﴾</span>. فما أحوجني أن أراقب الله في الصغير قبل الكبير، وألّا أحوم حول الحِمى كما حذّر النبيّ ﷺ، فإنّ من رعى حول الحمى يوشك أن يقع فيه.</p>
+      <p>ولأجل ذلك أحرص أن أتحلّى بهذه الصفة بأن أتوقّف عند حدود الله فلا أتجاوزها، وأُجلّ شعائره فلا أستهين بها، وأستحضر مهابته في خلوتي وجلوتي، حتى يكون تعظيمي له حالًا دائمًا لا موقفًا عابرًا.</p>
+
+      <div class="reflect-box">
+        <label for="reflect">✦ دورك أنت: ما الصفة التي تُحبّ أن تتحلّى بها من هذا الورد؟</label>
+        <textarea id="reflect" placeholder="اكتب صفتك وعزيمتك هنا… (تُحفظ في جهازك)"></textarea>
+        <div class="save-row">
+          <button class="btn btn-gold" id="save-reflect" style="padding:11px 24px;font-size:.95rem">احفظ عزيمتي</button>
+          <span class="saved-tag" id="saved-tag">✓ حُفظت في جهازك</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 · سؤال تثويري ============ -->
+<section class="section sec-cream" id="tathwiri" data-label="سؤال تثويري">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">٥</span>
+      <h2 class="sec-title">سؤال تَثْويري</h2>
+      <p class="sec-sub">فكّر في الإجابة أوّلًا… ثم انقر لتكشفها وتُقارن.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="qbox">
+      <div class="qitem reveal d1" data-q>
+        <div class="qhead">
+          <span class="q-icon">؟</span>
+          <span class="q-text"><span class="quran-inline">﴿وَطَهِّرْ بَيْتِيَ لِلطَّائِفِينَ﴾</span> — ما الحكمة من إضافة البيت إلى الله؟</span>
+          <span class="q-toggle">+</span>
+        </div>
+        <div class="qbody"><div class="qbody-inner">
+          <p class="think-first">الإجابة:</p>
+          جَعَلَ لهذا المكان مكانةً خاصّة عند الله أوّلًا، ثم تشريفُ الكعبة بهذا الاختصاص ثانيًا.
+        </div></div>
+      </div>
+
+      <div class="qitem reveal d2" data-q>
+        <div class="qhead">
+          <span class="q-icon">؟</span>
+          <span class="q-text"><span class="quran-inline">﴿وَمَن يُعَظِّمْ حُرُمَاتِ اللَّهِ فَهُوَ خَيْرٌ لَّهُ عِندَ رَبِّهِ﴾</span> — كيف يكون تعظيم حرمات الله؟</span>
+          <span class="q-toggle">+</span>
+        </div>
+        <div class="qbody"><div class="qbody-inner">
+          <p class="think-first">الإجابة:</p>
+          بتعظيم ما عظّمه الله أمرًا ونهيًا وشعائرَ وحدودًا، فيؤدّيها بإخلاص ويتجنّبها بتقوى، ولا يكون كما قال النبيّ ﷺ:
+          <p class="hadith">«كَالرَّاعِي يَرْعَى حَوْلَ الحِمَى، يُوشِكُ أَنْ يَرْتَعَ فِيهِ».</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 · المبادرة ============ -->
+<section class="section sec-green" id="mubadara" data-label="المبادرة">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">٦</span>
+      <h2 class="sec-title">المبادَرة</h2>
+      <p class="sec-sub">ابدأ يومك بذكر الله — سبّح معنا ١٠٠ مرّة بلمسة الزر.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="tasbih-wrap reveal d1">
+      <div class="dhikr-card">
+        <p class="hadith-q">«كَلِمَتَانِ خَفِيفَتَانِ عَلَى اللِّسَانِ، ثَقِيلَتَانِ فِي المِيزَانِ، حَبِيبَتَانِ إِلَى الرَّحْمَنِ»</p>
+        <p class="src">— متفق عليه</p>
+      </div>
+
+      <div class="dhikr-toggle" id="dhikr-toggle">
+        <button class="active" data-dhikr="سُبْحَانَ اللَّهِ وَبِحَمْدِهِ">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</button>
+        <button data-dhikr="سُبْحَانَ اللَّهِ العَظِيمِ">سُبْحَانَ اللَّهِ العَظِيمِ</button>
+      </div>
+
+      <div class="counter-stage" style="margin-top:24px">
+        <svg class="ring" viewBox="0 0 240 240">
+          <defs>
+            <linearGradient id="goldgrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#e3cb8c"/><stop offset="100%" stop-color="#a8843f"/>
+            </linearGradient>
+          </defs>
+          <circle class="track" cx="120" cy="120" r="113"/>
+          <circle class="fill" id="ring-fill" cx="120" cy="120" r="113"/>
+        </svg>
+        <button class="count-btn" id="count-btn">
+          <span class="num" id="count-num">0</span>
+          <span class="of">/ ١٠٠</span>
+          <span class="tap">اضغط للتسبيح</span>
+        </button>
+      </div>
+
+      <div class="tasbih-meta">
+        <span class="rounds-tag" id="rounds-tag">الجولات المكتملة: ٠</span>
+        <button class="reset-btn" id="reset-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 3v5h5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          تصفير
+        </button>
+      </div>
+    </div>
+
+    <p class="mubadara-note reveal d2">
+      أخي العزيز، ابدأ يومك بذكر الله؛ فالكلمة الطيّبة نورٌ للقلب وبركةٌ لليوم، مصداقًا لقوله تعالى
+      <span class="quran-inline">﴿وَهُدُوا إِلَى الطَّيِّبِ مِنَ الْقَوْلِ﴾</span> — أذكّرك وأذكّر نفسي، وأرجو أن تُذكّر بها من حولك
+      <span class="quran-inline">﴿وَذَكِّرْ فَإِنَّ الذِّكْرَىٰ تَنفَعُ الْمُؤْمِنِينَ﴾</span>.
+    </p>
+  </div>
+</section>
+
+<!-- ============ 7 · زاد المصاحب ============ -->
+<section class="section sec-paper" id="zad" data-label="زاد المصاحب">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">٧</span>
+      <h2 class="sec-title">زاد المُصاحِب</h2>
+      <p class="sec-sub">محطّتان من رحاب البيت الحرام — انقر كلّ محطّة لتكشف زادها.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="station-grid">
+      <div class="station reveal d1" data-station>
+        <div class="station-top">
+          <div class="pattern-overlay pattern-bg"></div>
+          <span class="st-num">المحطّة الأولى</span>
+          <h3>تقبيل الحجر الأسود</h3>
+        </div>
+        <div class="station-body">
+          <p>يُعلّم تقبيلُ الحجر المسلمَ أنّ العبرة في العبادة ليست بالمادّة نفسها، بل بطاعة الله واتّباع النبيّ ﷺ؛ فالمسلم يفعله تعبّدًا، لا اعتقادًا أنّ الحجر ينفع أو يضرّ بذاته.</p>
+          <div class="athar">
+            «إِنِّي أَعْلَمُ أَنَّكَ حَجَرٌ لاَ تَضُرُّ وَلاَ تَنْفَعُ، وَلَوْلاَ أَنِّي رَأَيْتُ النَّبِيَّ ﷺ يُقَبِّلُكَ مَا قَبَّلْتُكَ».
+            <span class="src">— عمر بن الخطاب رضي الله عنه</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="station reveal d2" data-station>
+        <div class="station-top">
+          <div class="pattern-overlay pattern-bg"></div>
+          <span class="st-num">المحطّة الثانية</span>
+          <h3>لحظة الدخول إلى الكعبة</h3>
+        </div>
+        <div class="station-body">
+          <p>ليست لحظةً عابرة، بل لحظة انكسارٍ وخشوعٍ يتهيّأ فيها القلب للتوبة والدموع، لأنّه يلامس معانيَ شديدة الخصوصية: من تقبيل الحجر الأسود، والالتزام بدقيق الشعائر والمناسك.</p>
+          <div class="athar">
+            عند المُلتزَم — بين الحجر الأسود وباب الكعبة — قيل: «هنا تُسكَب العَبَرات، وهنا تُستجاب الدعوات».
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BONUS · سجود التلاوة ============ -->
+<section class="section sec-green" id="sujood" data-label="سجود التلاوة">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="bonus-banner">★ زيادة في العلم</span>
+      <h2 class="sec-title">سجود التِّلاوة</h2>
+      <p class="sec-sub">أحكامه وشروطه وصفته في ضوء السنّة وأثر الصحابة.</p>
+      <div class="divider"></div>
+    </div>
+
+    <!-- الحكم -->
+    <div class="qbox reveal d1" style="margin-bottom:46px">
+      <div class="qitem" data-q>
+        <div class="qhead">
+          <span class="q-icon">!</span>
+          <span class="q-text">ما حكم سجود التلاوة؟</span>
+          <span class="q-toggle">+</span>
+        </div>
+        <div class="qbody"><div class="qbody-inner">
+          <p class="hadith">«يَا أَيُّهَا النَّاسُ إِنَّا نَمُرُّ بِالسُّجُودِ، فَمَنْ سَجَدَ فَقَدْ أَصَابَ، وَمَنْ لَمْ يَسْجُدْ فَلَا إِثْمَ عَلَيْهِ».</p>
+          <p style="margin-top:10px">— أمير المؤمنين عمر بن الخطاب رضي الله عنه (رواه البخاري).</p>
+          <p style="margin-top:14px"><strong style="color:var(--gold-light)">الخلاصة الفقهية:</strong> سجود التلاوة سُنّةٌ مؤكّدة مستحبّة وليس بواجبٍ فرض، وهو الراجح من أقوال الصحابة والأئمة والمحقّقين.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- الشروط -->
+    <h3 style="text-align:center;font-family:var(--font-display);color:var(--gold-light);font-size:1.5rem;margin-bottom:26px" class="reveal">شروط السجود <span style="opacity:.6;font-size:1rem">(اختيارات المحقّقين)</span></h3>
+    <div class="cond-grid">
+      <div class="cond reveal d1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 13c3-2 6-2 9 0s6 2 9 0M5 13l1.5 6h11L19 13" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="6" r="2.5"/></svg></div>
+        <h4>الطهارة</h4>
+        <p>لا تُشترط الطهارة من الحدثين على القول الراجح — وهو اختيار ابن تيمية وابن باز وابن عثيمين — لعدم ثبوت نصٍّ يُلزم بها.</p>
+      </div>
+      <div class="cond reveal d2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5L11 11l-1.5 3.5L13 13z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>استقبال القبلة</h4>
+        <p>يُستحبّ استقبال القبلة، ولكن لو سجد لغير جهتها عند تعذّر الاستقبال (كالمسافر على راحلته) جاز ولا حرج عليه.</p>
+      </div>
+      <div class="cond reveal d3">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 3a4 4 0 0 1 4 4v3H8V7a4 4 0 0 1 4-4z" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10h12l-1 11H7z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>ستر العورة</h4>
+        <p>يسجد المسلم على حاله، ويُستحبّ للمرأة السجود بخمارها؛ ولكن لو سجدت دونه في بيتها أجزأها، لعدم وجود الدليل المُلزِم.</p>
+      </div>
+    </div>
+
+    <!-- صفة السجود -->
+    <h3 style="text-align:center;font-family:var(--font-display);color:var(--gold-light);font-size:1.5rem;margin-bottom:30px" class="reveal">صفة السجود خارج الصلاة</h3>
+    <div class="steps reveal d1">
+      <div class="step"><span class="dot">١</span><div class="step-body"><p>يُكبّر الساجد <strong>تكبيرةً واحدة</strong> في بداية خفضه فقط.</p></div></div>
+      <div class="step"><span class="dot">٢</span><div class="step-body"><p>يسجد سجدةً واحدة كسجود الصلاة، يضع فيها جبهته وأعضاءه السبعة على الأرض.</p></div></div>
+      <div class="step"><span class="dot">٣</span><div class="step-body"><p>يدعو في سجوده بالأدعية المأثورة عن النبيّ ﷺ.</p></div></div>
+      <div class="step"><span class="dot">٤</span><div class="step-body"><p>يرفع رأسه من السجود <strong>بدون تكبيرٍ للرفع ولا تسليم</strong>.</p></div></div>
+      <div class="step warn"><span class="dot">⚠</span><div class="step-body"><p><strong>تنبيه:</strong> إذا كان السجود أثناء الصلاة المكتوبة، فإنه يُكبّر عند خفضه وعند رفعه، تماشيًا مع صفة صلاته ﷺ.</p></div></div>
+    </div>
+
+    <!-- ما يقال -->
+    <div class="dua-card reveal d1">
+      <p class="label">الدعاء المأثور</p>
+      <div class="line"></div>
+      <p class="dua">«سَجَدَ وَجْهِي لِلَّذِي خَلَقَهُ، وَشَقَّ سَمْعَهُ وَبَصَرَهُ بِحَوْلِهِ وَقُوَّتِهِ، فَتَبَارَكَ اللَّهُ أَحْسَنُ الْخَالِقِينَ».</p>
+      <p class="alt">ويُجزِئ القارئَ أيضًا التسبيحُ المعتاد في الصلاة: <b>«سُبْحَانَ رَبِّيَ الأَعْلَى».</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINISH ============ -->
+<section class="section finish" id="finish" data-label="الختام">
+  <div class="pattern-overlay pattern-bg"></div>
+  <div class="wrap" style="position:relative">
+    <div class="sec-head reveal">
+      <h2 class="sec-title" style="color:var(--cream)">ختام الورد الرابع</h2>
+      <p class="sec-sub">تتبّع تقدّمك في الرحلة — أكمل المحطّات لتفتح شهادة الإتمام.</p>
+      <div class="divider"></div>
+    </div>
+
+    <p class="progress-text reveal" id="progress-text">أكملت ٠ من ٧ محطّات</p>
+
+    <div class="checklist reveal d1" id="checklist"></div>
+
+    <div class="cert reveal d2" id="cert">
+      <h3>شهادة إتمام</h3>
+      <p class="cert-sub">الزُّلفة ٢ · الورد الرابع — سورة الحج (٢٤–٣٠)</p>
+      <input type="text" class="name-input" id="cert-name" placeholder="اكتب اسمك هنا" maxlength="32" />
+      <p class="blessing">اللهُمَّ اجعَلْنا مِن أهلِ القُرآنِ الذينَ هُم أهلُكَ وخاصّتُكَ 🤍</p>
+      <button class="btn btn-gold" id="celebrate-btn">احتفِ بإتمامي ✦</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="crescent-sm">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><defs><mask id="cmask-foot"><rect width="100" height="100" fill="#000"/><circle cx="44" cy="50" r="37" fill="#fff"/><circle cx="62" cy="44" r="31" fill="#000"/></mask></defs><rect width="100" height="100" fill="#c6a256" mask="url(#cmask-foot)"/><path fill="#c6a256" d="M70 38l4.7 9.5 10.5 1.5-7.6 7.4 1.8 10.4-9.4-4.9-9.4 4.9 1.8-10.4-7.6-7.4 10.5-1.5z"/></svg>
+  </div>
+  <p>الزُّلفة ٢ · رفيقي في مصاحبة سورة الحج — عشرة أيام من النعيم</p>
+  <p style="margin-top:6px;opacity:.6;font-size:.82rem">صُنع بحبّ ليكون نورًا لمن يقرؤه · ﴿وَذَكِّرْ فَإِنَّ الذِّكْرَىٰ تَنفَعُ الْمُؤْمِنِينَ﴾</p>
+</footer>
+
+<canvas id="confetti-canvas"></canvas>
+<div id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="toast-text"></span></div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Mission tracking ---------- */
+  const MISSIONS = [
+    {id:'hifz',   label:'الحفظ',         num:'١'},
+    {id:'gharib', label:'معاني الغريب',  num:'٢'},
+    {id:'tajweed',label:'التجويد',       num:'٣'},
+    {id:'tadabbur',label:'الفهم والتدبّر',num:'٤'},
+    {id:'tathwiri',label:'سؤال تثويري',  num:'٥'},
+    {id:'mubadara',label:'المبادرة',     num:'٦'},
+    {id:'zad',    label:'زاد المصاحب',    num:'٧'},
+  ];
+  const done = new Set();
+  let celebrated = false;
+  const arNum = n => String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+
+  function complete(id){
+    if(done.has(id)) return;
+    if(!MISSIONS.some(m=>m.id===id)) return;
+    done.add(id);
+    const el = document.querySelector('.check-item[data-mid="'+id+'"]');
+    if(el) el.classList.add('done');
+    const pt = document.getElementById('progress-text');
+    pt.textContent = 'أكملت ' + arNum(done.size) + ' من ٧ محطّات';
+    const m = MISSIONS.find(x=>x.id===id);
+    showToast('أتممت محطّة: ' + m.label);
+    if(done.size === MISSIONS.length && !celebrated){
+      celebrated = true;
+      setTimeout(()=>{ fireConfetti(); showToast('بارك الله فيك — أتممت الورد كاملًا! 🤍'); }, 600);
+    }
+  }
+
+  /* build checklist */
+  const cl = document.getElementById('checklist');
+  MISSIONS.forEach(m=>{
+    const div = document.createElement('div');
+    div.className = 'check-item';
+    div.dataset.mid = m.id;
+    div.innerHTML = '<span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
+      + '<span class="ci-label">'+m.label+'</span><span class="ci-num">'+m.num+'</span>';
+    cl.appendChild(div);
+  });
+
+  /* ---------- Toast ---------- */
+  let toastTimer;
+  function showToast(text){
+    const t = document.getElementById('toast');
+    document.getElementById('toast-text').textContent = text;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>t.classList.remove('show'), 2600);
+  }
+
+  /* ---------- Scroll progress ---------- */
+  const pb = document.getElementById('progress-bar');
+  window.addEventListener('scroll', ()=>{
+    const h = document.documentElement;
+    const pct = (h.scrollTop)/(h.scrollHeight - h.clientHeight)*100;
+    pb.style.width = pct + '%';
+  }, {passive:true});
+
+  /* ---------- Journey nav ---------- */
+  const sections = Array.from(document.querySelectorAll('section[data-label], header'));
+  const jn = document.getElementById('journey');
+  const navTargets = Array.from(document.querySelectorAll('section[data-label]'));
+  navTargets.forEach(s=>{
+    const b = document.createElement('button');
+    b.dataset.label = s.dataset.label;
+    b.dataset.target = s.id;
+    b.addEventListener('click', ()=> s.scrollIntoView({behavior:'smooth'}));
+    jn.appendChild(b);
+  });
+  const navObserver = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        document.querySelectorAll('#journey button').forEach(b=>b.classList.remove('active'));
+        const b = document.querySelector('#journey button[data-target="'+e.target.id+'"]');
+        if(b) b.classList.add('active');
+      }
+    });
+  }, {threshold:.5});
+  navTargets.forEach(s=>navObserver.observe(s));
+
+  /* ---------- Reveal on scroll ---------- */
+  const revObserver = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); revObserver.unobserve(e.target);} });
+  }, {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>{ if(!el.classList.contains('in')) revObserver.observe(el); });
+
+  /* ---------- Stars ---------- */
+  const starWrap = document.getElementById('stars');
+  for(let i=0;i<28;i++){
+    const s = document.createElement('i');
+    const size = Math.random()*2.5+1;
+    s.style.width = s.style.height = size+'px';
+    s.style.left = Math.random()*100+'%';
+    s.style.top = Math.random()*100+'%';
+    s.style.animationDelay = (Math.random()*3)+'s';
+    starWrap.appendChild(s);
+  }
+
+  /* ---------- 1 · Memorization ---------- */
+  const keys = Array.from(document.querySelectorAll('.ayah [data-key]'));
+  let memoOn = false;
+  const memoToggle = document.getElementById('memo-toggle');
+  const memoHint = document.getElementById('memo-hint');
+  memoToggle.addEventListener('click', ()=>{
+    memoOn = !memoOn;
+    memoToggle.classList.toggle('active', memoOn);
+    keys.forEach(k=>{
+      if(memoOn){ k.classList.remove('hl'); k.classList.add('blank'); }
+      else { k.classList.add('hl'); k.classList.remove('blank','show'); }
+    });
+    memoHint.textContent = memoOn ? 'انقر كل كلمةٍ مخفيّة لتكشفها وتختبر حفظك.' : '';
+    complete('hifz');
+  });
+  document.getElementById('reveal-all').addEventListener('click', ()=>{
+    document.querySelectorAll('.ayah .blank').forEach(b=>b.classList.add('show'));
+    complete('hifz');
+  });
+  document.querySelector('#hifz').addEventListener('click', e=>{
+    const b = e.target.closest('.blank');
+    if(b) b.classList.toggle('show');
+  });
+
+  /* ---------- 2 · Flashcards ---------- */
+  const flashes = document.querySelectorAll('[data-flash]');
+  const flipped = new Set();
+  flashes.forEach((f,i)=>{
+    f.addEventListener('click', ()=>{
+      f.classList.toggle('flipped');
+      if(f.classList.contains('flipped')) flipped.add(i);
+      if(flipped.size === flashes.length) complete('gharib');
+    });
+  });
+
+  /* ---------- 3 · Tajweed matn + quiz ---------- */
+  const matnOpened = new Set();
+  document.querySelectorAll('[data-matn]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const card = btn.closest('.tj-card');
+      const matn = card.querySelector('.matn');
+      const open = matn.classList.toggle('open');
+      btn.textContent = open ? 'إخفاء المتن' : 'اكشف القاعدة من المتن';
+      if(open){ matnOpened.add(card); if(matnOpened.size>=2) complete('tajweed'); }
+    });
+  });
+  const quizSolved = new Set();
+  document.querySelectorAll('[data-quiz]').forEach(q=>{
+    const fb = q.querySelector('.quiz-feedback');
+    q.querySelectorAll('.quiz-opt').forEach(opt=>{
+      opt.addEventListener('click', ()=>{
+        if(q.dataset.solved) return;
+        const correct = opt.dataset.correct === 'true';
+        if(correct){
+          opt.classList.add('correct'); q.dataset.solved='1';
+          fb.style.color = '#1a6349'; fb.textContent = '✓ أحسنت! إجابة صحيحة.';
+          quizSolved.add(q.dataset.quiz);
+          if(quizSolved.size>=2) complete('tajweed');
+        } else {
+          opt.classList.add('wrong');
+          fb.style.color = '#b03b3b'; fb.textContent = 'حاول مرّة أخرى…';
+          setTimeout(()=>opt.classList.remove('wrong'), 500);
+        }
+      });
+    });
+  });
+
+  /* ---------- 4 · Tadabbur reflection ---------- */
+  const reflectKey = 'zalfa4_reflect';
+  const ta = document.getElementById('reflect');
+  try{ const saved = localStorage.getItem(reflectKey); if(saved) ta.value = saved; }catch(e){}
+  const tadObserver = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ complete('tadabbur'); tadObserver.disconnect(); } });
+  }, {threshold:.4});
+  tadObserver.observe(document.querySelector('.tadabbur'));
+  document.getElementById('save-reflect').addEventListener('click', ()=>{
+    try{ localStorage.setItem(reflectKey, ta.value); }catch(e){}
+    const tag = document.getElementById('saved-tag');
+    tag.classList.add('show'); setTimeout(()=>tag.classList.remove('show'), 2200);
+    complete('tadabbur');
+  });
+
+  /* ---------- 5 + sujood · Accordions ---------- */
+  const answersOpened = new Set();
+  document.querySelectorAll('[data-q]').forEach((item,i)=>{
+    const head = item.querySelector('.qhead');
+    const body = item.querySelector('.qbody');
+    head.addEventListener('click', ()=>{
+      const open = item.classList.toggle('open');
+      body.style.maxHeight = open ? body.scrollHeight + 'px' : 0;
+      if(open && item.closest('#tathwiri')){
+        answersOpened.add(i);
+        if(answersOpened.size>=2) complete('tathwiri');
+      }
+    });
+  });
+
+  /* ---------- 6 · Tasbih ---------- */
+  const TARGET = 100;
+  let count = 0, rounds = 0;
+  const ring = document.getElementById('ring-fill');
+  const circ = 2 * Math.PI * 113;
+  ring.style.strokeDasharray = circ;
+  const numEl = document.getElementById('count-num');
+  const roundsTag = document.getElementById('rounds-tag');
+  function renderTasbih(){
+    numEl.textContent = arNum(count);
+    ring.style.strokeDashoffset = circ * (1 - count/TARGET);
+    roundsTag.textContent = 'الجولات المكتملة: ' + arNum(rounds);
+  }
+  document.getElementById('count-btn').addEventListener('click', ()=>{
+    count++;
+    if(navigator.vibrate) navigator.vibrate(12);
+    if(count >= TARGET){
+      rounds++; count = 0;
+      showToast('سبحان الله! أتممت ' + arNum(TARGET) + ' تسبيحة 🤍');
+      if(navigator.vibrate) navigator.vibrate([20,40,20]);
+      fireConfetti(0.4);
+    }
+    renderTasbih();
+    if(rounds>=1 || count>=33) complete('mubadara');
+  });
+  document.getElementById('reset-btn').addEventListener('click', ()=>{ count=0; rounds=0; renderTasbih(); });
+  const dt = document.getElementById('dhikr-toggle');
+  dt.addEventListener('click', e=>{
+    const b = e.target.closest('button'); if(!b) return;
+    dt.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+  });
+  renderTasbih();
+
+  /* ---------- 7 · Stations ---------- */
+  const stationsSeen = new Set();
+  const stObserver = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ stationsSeen.add(e.target); if(stationsSeen.size>=2) complete('zad'); } });
+  }, {threshold:.5});
+  document.querySelectorAll('[data-station]').forEach(s=>stObserver.observe(s));
+
+  /* ---------- Certificate name ---------- */
+  const nameKey = 'zalfa4_name';
+  const nameInput = document.getElementById('cert-name');
+  try{ const sv = localStorage.getItem(nameKey); if(sv) nameInput.value = sv; }catch(e){}
+  nameInput.addEventListener('input', ()=>{ try{ localStorage.setItem(nameKey, nameInput.value); }catch(e){} });
+  document.getElementById('celebrate-btn').addEventListener('click', ()=>{
+    fireConfetti(); showToast('تقبّل الله منك ومنّا 🤍');
+  });
+
+  /* ---------- Confetti ---------- */
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  let parts = [], raf = null;
+  function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const COLORS = ['#c6a256','#e3cb8c','#a8843f','#1a6349','#0d3b2e','#f7f3e9'];
+  function fireConfetti(scale){
+    scale = scale || 1;
+    const n = Math.floor(120*scale);
+    for(let i=0;i<n;i++){
+      parts.push({
+        x: innerWidth/2 + (Math.random()-.5)*200,
+        y: innerHeight*0.35,
+        vx:(Math.random()-.5)*12, vy:Math.random()*-12-4,
+        g:0.3+Math.random()*0.2, size:Math.random()*8+4,
+        color:COLORS[(Math.random()*COLORS.length)|0],
+        rot:Math.random()*6, vr:(Math.random()-.5)*0.3, life:0, max:120+Math.random()*60
+      });
+    }
+    if(!raf) raf = requestAnimationFrame(loop);
+  }
+  function loop(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    parts = parts.filter(p=>p.life < p.max);
+    parts.forEach(p=>{
+      p.life++; p.vy += p.g; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot);
+      ctx.globalAlpha = Math.max(0, 1 - p.life/p.max);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size*0.6);
+      ctx.restore();
+    });
+    if(parts.length){ raf = requestAnimationFrame(loop); }
+    else { ctx.clearRect(0,0,canvas.width,canvas.height); raf=null; }
+  }
+})();
+</script>
+</body>
+</html>
